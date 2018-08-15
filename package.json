@@ -2,7 +2,14 @@
   "name": "starter-kit-dev-env",
   "version": "1.0.0",
   "description": "Dev env starter kit",
-  "scripts": {},
+  "scripts": {
+    "prestart": "node buildScripts/startMessage.js",
+    "start": "npm-run-all --parallel security-check open:src",
+    "open:src": "node buildScripts/srcServer.js",
+    "security-check": "nsp check",
+    "localtunnel": "lt --port 3000",
+    "share": "npm-run-all --parallel open:src localtunnel"
+  },
   "author": "Shay Levinzon",
   "license": "MIT",
   "dependencies": {
